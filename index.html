@@ -8,8 +8,16 @@
 
       if (code) {
         const url = `https://t.me/Iwjqkqibot?start=${code}`
-        window.open(url, "_blank")  // يفتح البوت في نافذة جديدة
-        window.close()              // يحاول غلق صفحة الموقع
+        window.location.href = url
+
+        
+        setTimeout(() => {
+          if (window.Telegram && Telegram.WebApp) {
+            Telegram.WebApp.close()
+          } else {
+            window.close()
+          }
+        }, 1000)
       }
     </script>
     <style>
