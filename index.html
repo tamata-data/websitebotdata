@@ -2,23 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
       const query = new URLSearchParams(window.location.search)
       const code = query.get("code")
 
       if (code) {
-        // يفتح رابط البوت
-        window.location.href = `https://t.me/Iwjqkqibot?start=${code}`
-
-        // يحاول غلق الصفحة باستخدام WebApp API
-        setTimeout(() => {
-          if (window.Telegram && Telegram.WebApp) {
-            Telegram.WebApp.close()
-          } else {
-            window.close()
-          }
-        }, 1500)  // تنطي وقت كافي للرابط ينفتح
+        const url = `https://t.me/Iwjqkqibot?start=${code}`
+        window.open(url, "_blank")  // يفتح البوت في نافذة جديدة
+        window.close()              // يحاول غلق صفحة الموقع
       }
     </script>
     <style>
